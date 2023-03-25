@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'phone' => '8012751736',
         ]);
+
+        $this->call(ProductCategorySeeder::class);
     }
 }

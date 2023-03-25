@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\v1\AppController;
 use App\Http\Controllers\API\v1\AuthenticationController;
+use App\Http\Controllers\API\v1\ProductController;
 use App\Http\Controllers\API\v1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,12 @@ Route::controller(AuthenticationController::class)->group(function () {
     Route::post('logout', 'logout')->middleware('auth:sanctum');
 });
 
+Route::controller(AppController::class)->group(function () {
+    Route::get('categories', 'categories');
+});
+
 Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
+
     Route::apiResource('users', UserController::class);
+    Route::apiResource('products', ProductController::class);
 });
